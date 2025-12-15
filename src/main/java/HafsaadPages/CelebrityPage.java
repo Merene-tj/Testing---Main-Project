@@ -32,10 +32,6 @@ public class CelebrityPage
 
 	 By Wrap = By.xpath("//input[@type=\"checkbox\"]");
 	 
-	 //By WrapWaist = By.name("name=\"properties[Waist]\"");
-	 
-	 //By WrapHeight = By.name("name=\"properties[Height]\"");
-	    
 	 By addToCartBtn = By.xpath("//button[@id=\"addon_submit-8987211628779\"]");
 	 
 	 
@@ -56,8 +52,6 @@ public class CelebrityPage
 
 	    WebElement CSMenu = wait.until(ExpectedConditions.visibilityOf(Celebrity));
 	    CSMenu.click();
-	    //Actions actions = new Actions(driver);
-	    //actions.moveToElement(CSMenu).pause(Duration.ofMillis(800)).perform();
 
 	 }
 
@@ -102,14 +96,11 @@ public class CelebrityPage
 
         By wrapCheckbox = By.id("checkbox-8987211628779");
 
-        WebElement checkbox =
-                wait.until(ExpectedConditions.presenceOfElementLocated(wrapCheckbox));
+        WebElement checkbox = wait.until(ExpectedConditions.presenceOfElementLocated(wrapCheckbox));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", checkbox);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", checkbox);
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].click();", checkbox);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", checkbox);
     }
 
 
@@ -118,11 +109,9 @@ public class CelebrityPage
     {
         By waistDropdown = By.xpath("//select[@name='properties[Waist]']");
 
-        WebElement waist =
-                wait.until(ExpectedConditions.visibilityOfElementLocated(waistDropdown));
+        WebElement waist = wait.until(ExpectedConditions.visibilityOfElementLocated(waistDropdown));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", waist);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", waist);
 
         new Select(waist).selectByValue("34");
     }
@@ -133,14 +122,11 @@ public class CelebrityPage
     {
         By heightDropdown = By.xpath("//select[@name='properties[Height]']");
 
-        WebElement height =
-                wait.until(ExpectedConditions.visibilityOfElementLocated(heightDropdown));
+        WebElement height = wait.until(ExpectedConditions.visibilityOfElementLocated(heightDropdown));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", height);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", height);
 
-        new Select(height)
-                .selectByVisibleText("Regular (5.2 to 5.4 feet in height)");
+        new Select(height).selectByVisibleText("Regular (5.2 to 5.4 feet in height)");
     }
 
 
@@ -171,24 +157,21 @@ public class CelebrityPage
             return null;
         });
 
-        // Scroll into view
+        // Scroll to view
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].scrollIntoView({block:'center'});", addBtn);
-
-        // JS click avoids interception
+        
         ((JavascriptExecutor) driver)
                 .executeScript("arguments[0].click();", addBtn);
 
-        // Wait for mini cart drawer
+        // Wait for the mini cart drawer
         wait.until(ExpectedConditions.presenceOfElementLocated(cartCloseBtn));
-
-        // Close drawer to keep next tests stable
-        WebElement closeBtn =
-                wait.until(ExpectedConditions.elementToBeClickable(cartCloseBtn));
+      
+        WebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(cartCloseBtn));
+        
         closeBtn.click();
 
-        wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                By.cssSelector("header.drawer__header")));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector("header.drawer__header")));
     }
 
     

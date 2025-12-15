@@ -55,26 +55,20 @@ public class BlousesPage
 
 	    Actions actions = new Actions(driver);
 
-	    WebElement blouseMenu =
-	            wait.until(ExpectedConditions.elementToBeClickable(Blouses));
+	    WebElement blouseMenu =	wait.until(ExpectedConditions.elementToBeClickable(Blouses));
 
-	    // Strong hover
 	    actions.moveToElement(blouseMenu).perform();
 
-	    // Small wait for animation
 	    wait.until(ExpectedConditions.visibilityOf(PrmBlouses));
 	}
 
 	public void PremiuimBlouse()
 	{
-	    WebElement prBlouse =
-	            wait.until(ExpectedConditions.elementToBeClickable(PrmBlouses));
+	    WebElement prBlouse = wait.until(ExpectedConditions.elementToBeClickable(PrmBlouses));
 
-	    ((JavascriptExecutor) driver)
-	            .executeScript("arguments[0].scrollIntoView({block:'center'});", prBlouse);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", prBlouse);
 
-	    ((JavascriptExecutor) driver)
-	            .executeScript("arguments[0].click();", prBlouse);
+	    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", prBlouse);
 	}
 
     
@@ -88,11 +82,9 @@ public class BlousesPage
     {
         base.handleControlPopup();
 
-        WebElement dropdown = wait.until(
-                ExpectedConditions.presenceOfElementLocated(size));
+        WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(size));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
 
         wait.until(ExpectedConditions.elementToBeClickable(size)).click();
     }  
@@ -108,11 +100,9 @@ public class BlousesPage
     {
         base.handleControlPopup();
 
-        WebElement dropdown = wait.until(
-                ExpectedConditions.presenceOfElementLocated(style));
+        WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(style));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
 
         wait.until(ExpectedConditions.elementToBeClickable(style)).click();
     } 
@@ -129,6 +119,7 @@ public class BlousesPage
         base.handleControlPopup();
 
         By cartCloseBtn = By.cssSelector("button.drawer__close-button[data-action='close']");
+        
         for (int i = 0; i < 2; i++)
         {
             try
@@ -139,10 +130,8 @@ public class BlousesPage
 
                 wait.until(ExpectedConditions.elementToBeClickable(addBtn)).click();
 
-                // 🕒 Keep cart open for 3 seconds
                 Thread.sleep(3000);
 
-                // Close cart
                 WebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(cartCloseBtn));
 
                 closeBtn.click();

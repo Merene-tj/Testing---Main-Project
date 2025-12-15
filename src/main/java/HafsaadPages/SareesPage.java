@@ -65,19 +65,16 @@ public class SareesPage
     {
         base.handleControlPopup();
 
-        WebElement dropdown = wait.until(
-                ExpectedConditions.presenceOfElementLocated(hipDropdown));
+        WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(hipDropdown));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
 
         wait.until(ExpectedConditions.elementToBeClickable(dropdown)).click();
     }
 
     public void SizeHip()
     {
-        WebElement option = wait.until(
-                ExpectedConditions.elementToBeClickable(hipOption));
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(hipOption));
 
         option.click();
     }
@@ -97,10 +94,8 @@ public class SareesPage
 
                 wait.until(ExpectedConditions.elementToBeClickable(addBtn)).click();
 
-                // 🕒 Keep cart open for 3 seconds
                 Thread.sleep(3000);
 
-                // Close cart
                 WebElement closeBtn = wait.until(ExpectedConditions.elementToBeClickable(cartCloseBtn));
 
                 closeBtn.click();

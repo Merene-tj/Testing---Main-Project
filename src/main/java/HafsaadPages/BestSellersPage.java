@@ -15,17 +15,13 @@ public class BestSellersPage
     WebDriverWait wait;
     Base base;
 
-    @FindBy(xpath="(//a[text()='Best Sellers'])[1]") 
-    WebElement BSellr;
+    @FindBy(xpath="(//a[text()='Best Sellers'])[1]") WebElement BSellr;
 
-    @FindBy(xpath="(//a[@href='/products/deepika-pure-viscose-saree-ruby-creme'])[1]") 
-    WebElement Prdct1;
+    @FindBy(xpath="(//a[@href='/products/deepika-pure-viscose-saree-ruby-creme'])[1]") WebElement Prdct1;
 
     By blouseDropdown = By.xpath("(//button[@aria-haspopup=\"listbox\"])[2]");
 
-    By blouseOption32 = By.xpath(
-        "(//button[text()='32- Padded'])[2]"
-    );
+    By blouseOption32 = By.xpath("(//button[text()='32- Padded'])[2]");
 
     By addToCartBtn = By.id("AddToCart");
 
@@ -55,19 +51,16 @@ public class BestSellersPage
     {
         base.handleControlPopup();
 
-        WebElement dropdown = wait.until(
-                ExpectedConditions.presenceOfElementLocated(blouseDropdown));
+        WebElement dropdown = wait.until(ExpectedConditions.presenceOfElementLocated(blouseDropdown));
 
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'});", dropdown);
 
         wait.until(ExpectedConditions.elementToBeClickable(dropdown)).click();
     }
 
     public void BlouseOptn()
     {
-        WebElement option = wait.until(
-                ExpectedConditions.elementToBeClickable(blouseOption32));
+        WebElement option = wait.until(ExpectedConditions.elementToBeClickable(blouseOption32));
 
         option.click();
     }
@@ -77,6 +70,7 @@ public class BestSellersPage
         base.handleControlPopup();
 
         By cartCloseBtn = By.cssSelector("button.drawer__close-button[data-action='close']");
+        
         for (int i = 0; i < 2; i++)
         {
             try
@@ -87,7 +81,7 @@ public class BestSellersPage
 
                 wait.until(ExpectedConditions.elementToBeClickable(addBtn)).click();
 
-                // 🕒 Keep cart open for 3 seconds
+                // to Keep cart open for 3 seconds
                 Thread.sleep(3000);
 
                 // Close cart

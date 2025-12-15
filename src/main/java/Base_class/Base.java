@@ -24,18 +24,16 @@ public class Base
     protected WebDriverWait wait;
     protected String baseurl = "https://hafsaad.com/";
 
-    // 🔹 Extent Report objects
+    //  Extent Report objects
     protected static ExtentReports extent;
     protected ExtentTest test;
     protected static ExtentHtmlReporter htmlReporter;
 
-    /* =========================
-       SETUP (once per class)
-       ========================= */
+  
     @BeforeClass
     public void setup() 
     {
-        // 📊 Extent report config (ONLY ONCE)
+        // Extent report config (ONLY ONCE)
         if (extent == null)
         {
             htmlReporter = new ExtentHtmlReporter("./Report/AutomationReport.html");
@@ -51,7 +49,7 @@ public class Base
             extent.setSystemInfo("Tester", "Merene");
         }
 
-        // 🌐 Browser setup
+        // Browser setup
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
 
@@ -62,9 +60,8 @@ public class Base
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    /* =========================
-       BEFORE EACH TEST
-       ========================= */
+
+
     @BeforeMethod
     public void beforeEachTest(Method method) 
     {
@@ -72,9 +69,7 @@ public class Base
         handleControlPopup();
     }
 
-    /* =========================
-       AFTER EACH TEST
-       ========================= */
+
     @AfterMethod
     public void afterEachTest(ITestResult result)
     {
@@ -92,9 +87,7 @@ public class Base
         }
     }
 
-    /* =========================
-       TEARDOWN (once per class)
-       ========================= */
+
     @AfterClass
     public void tearDown() 
     {
@@ -109,9 +102,7 @@ public class Base
         }
     }
 
-    /* =========================
-       CONTLO POPUP HANDLER
-       ========================= */
+
     public void handleControlPopup() 
     {
         try 
